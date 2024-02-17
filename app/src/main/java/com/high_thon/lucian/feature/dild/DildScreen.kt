@@ -31,16 +31,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.high_thon.lucian.common.theme.LucianTheme
 import com.high_thon.lucian.feature.dild.component.DildButton
 import com.high_thon.lucian.feature.dild.component.DildCard
 import com.high_thon.lucian.feature.home.component.HomeButton
 
-@Preview
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DildScreen(
-
+    navController: NavController
 ) {
 
     val pagerState = rememberPagerState()

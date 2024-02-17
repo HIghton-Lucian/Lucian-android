@@ -16,15 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.high_thon.lucian.common.theme.LucianTheme
 import com.high_thon.lucian.feature.home.component.HomeButton
 import com.high_thon.lucian.feature.home.component.HomeHorizontalPager
 import com.high_thon.lucian.feature.home.component.HomeImageHorizontalPager
 
-@Preview
 @Composable
 fun HomeScreen(
-
+    navController: NavController
 ) {
     val scrollState = rememberScrollState()
 
