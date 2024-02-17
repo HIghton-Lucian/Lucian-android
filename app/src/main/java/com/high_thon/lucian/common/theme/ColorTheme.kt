@@ -3,6 +3,7 @@ package com.high_thon.lucian.common.theme
 import androidx.compose.ui.graphics.Color
 
 abstract class ColorTheme {
+    abstract val SUBPrimary: Color
     abstract val BACKGROUND: Color
     abstract val SUB: Color
 
@@ -28,4 +29,5 @@ abstract class ColorTheme {
     abstract val BLACK: Color
     abstract val WHITE: Color
     abstract val TRANSPARENT: Color
+    abstract val BLUE: Color
 }
