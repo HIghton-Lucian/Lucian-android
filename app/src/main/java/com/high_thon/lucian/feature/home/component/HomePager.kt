@@ -42,13 +42,14 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.high_thon.lucian.R
 import com.high_thon.lucian.common.theme.LucianTheme
+import com.high_thon.lucian.core.Env.RC
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeImageHorizontalPager(
     modifier: Modifier,
-    items: List<String>,
+    items: List<Triple<String, String, String>>,
     onItemClick: (String) -> Unit
 ) {
     val pagerState = rememberPagerState()
@@ -96,7 +97,7 @@ fun HomeImageHorizontalPager(
                                     if (show) {
                                         backVisible.value = !backVisible.value
                                     }
-                                    onItemClick(items[nowPage])
+                                    onItemClick(items[nowPage].first)
                                 }
                                 .clipToBounds()
                                 .padding(vertical = paddingValue)
@@ -125,7 +126,7 @@ fun HomeImageHorizontalPager(
                                             Spacer(modifier = Modifier.height(16.dp))
                                             Text(
                                                 modifier = Modifier,
-                                                text = items[nowPage] + "ddd",
+                                                text = items[nowPage].first,
                                                 color = colors.WHITE,
                                                 style = typography.B12,
                                             )
@@ -133,7 +134,7 @@ fun HomeImageHorizontalPager(
                                             Spacer(modifier = Modifier.height(22.dp))
                                             Text(
                                                 modifier = Modifier,
-                                                text = items[nowPage] + "dd",
+                                                text = items[nowPage].second,
                                                 color = colors.WHITE,
                                                 style = typography.R12,
                                             )
@@ -141,7 +142,7 @@ fun HomeImageHorizontalPager(
                                         Text(
                                             modifier = Modifier
                                                 .align(Alignment.BottomEnd),
-                                            text = items[nowPage] + "dwewe",
+                                            text = items[nowPage].third,
                                             color = colors.GRAY3,
                                             style = typography.R12
                                         )
@@ -238,7 +239,7 @@ fun PagerPreview() {
                 modifier = Modifier
                     .height(280.dp)
                     .fillMaxWidth(),
-                items = listOf("test ", "test ", "test ", "test "),
+                items = listOf(Triple("김채원이 내 여자친구가 되는 꿈", "일어나자마자 현관문을 애니메이션에 나오는 것 처럼 상상해 순간이동해서 김채원이....", "moon님의 추천"), Triple("내가 구글에 입사하는 꿈", "꿈에서 상상하는 것 치고 작다고 할 수 있다 하지만 구글? 우리 주변 인물이 들어가는 것 조차 보기 힘든 곳...", "google like님의 추천"), Triple("배고파지지 않는 꿈", "배고프다는 것은 무엇일까? 나는 한번 꿈속에서 상상해보았다. 자각몽에서 모든 것이 이루어지는데 배고픔을 상상으로 표현하면 어땠을까 싶었다 하지만 이 선택은...", "식신님의 추천")),
                 onItemClick = {}
             )
 
@@ -246,7 +247,7 @@ fun PagerPreview() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(78.dp),
-                items = listOf("test ", "test ", "test ", "test "),
+                items = RC,
             )
         }
     }

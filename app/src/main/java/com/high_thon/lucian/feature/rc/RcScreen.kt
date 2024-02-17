@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.min
 import com.high_thon.lucian.common.component.Progress
 import com.high_thon.lucian.common.component.ProgressBar
 import com.high_thon.lucian.common.theme.LucianTheme
+import com.high_thon.lucian.core.Env.RC
 import com.high_thon.lucian.feature.dild.component.DildButton
 import com.high_thon.lucian.feature.rc.component.RcCard
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -44,7 +45,7 @@ fun RcScreen(
 
 ) {
     var chooseList: List<String> by remember { mutableStateOf(emptyList()) }
-    var rcList by remember { mutableStateOf(listOf("손가락 꺾기", "손목 움직이기", "관절 스트레칭")) }
+    var rcList by remember { mutableStateOf(RC) }
 
     var isEdit by remember { mutableStateOf(true) }
 
