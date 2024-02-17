@@ -6,8 +6,8 @@ import com.high_thon.lucian.common.theme.ColorTheme
 object LightColor : ColorTheme() {
     override val BACKGROUND = Color(0xFF212A3E)
     override val SUB: Color = Color(0xFF2A354D)
-    override val LIGHTBLUE1 = Color(0x00000000)
-    override val LIGHTBLUE2 = Color(0x00000000)
+    override val LIGHTBLUE1 = Color(0xFF0088EB)
+    override val LIGHTBLUE2 = Color(0xFF41495B)
     override val ICONBLUE = Color(0x00000000)
     override val ICONGRAY = Color(0x00000000)
     override val TEXTCOLOR = Color(0xFF343434)
