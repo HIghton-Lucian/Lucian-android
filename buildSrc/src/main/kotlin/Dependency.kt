@@ -72,6 +72,7 @@ object Dependency {
         //hilt
         const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
         const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+        const val HILT_NAVIGATION = "androidx.hilt:hilt-navigation-compose:1.0.0"
 
         //accompanist
         const val ACCOMPANIST = "com.google.accompanist:accompanist-systemuicontroller:${Versions.ACCOMPANIST}"

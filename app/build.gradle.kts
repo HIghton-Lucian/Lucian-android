@@ -49,9 +49,17 @@ android {
 }
 
 dependencies {
+    val room_version = "2.5.0"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
     //hilt
     implementation(Dependency.Google.HILT_ANDROID)
     kapt(Dependency.Google.HILT_ANDROID_COMPILER)
+    implementation(Dependency.Google.HILT_NAVIGATION)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
 
     //coil
     implementation(Dependency.Image.COIL)

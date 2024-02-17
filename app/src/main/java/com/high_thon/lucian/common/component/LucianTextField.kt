@@ -27,6 +27,7 @@ fun LucianTextField(
     value: String,
     onValueChange: (String) -> Unit,
     error: String? = null,
+    maxLines: Int = 1,
     isPassword: Boolean = false,
     keyboardType: KeyboardType = KeyboardType.Text,
     imeAction: ImeAction = ImeAction.Default,
@@ -81,7 +82,7 @@ fun LucianTextField(
                         imeAction = imeAction
                     ),
                     visualTransformation = if (!passwordVisible && isPassword) PasswordVisualTransformation() else VisualTransformation.None,
-                    maxLines = 1,
+                    maxLines = maxLines,
                     textStyle = LucianTypography.R16.copy(color = Color.White),
                     decorationBox = { innerTextField ->
                         if (value.isEmpty() && hint != null) {

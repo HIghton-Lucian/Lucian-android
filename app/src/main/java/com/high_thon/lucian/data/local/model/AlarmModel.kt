@@ -1,4 +1,4 @@
-package com.high_thon.lucian.data.rocal.model
+package com.high_thon.lucian.data.local.model
 
 data class AlarmModel(
     val isAfternoon: Boolean,

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,20 +24,26 @@ import com.high_thon.lucian.common.component.LucianBottomNavigation
 import com.high_thon.lucian.common.theme.LucianTheme
 import com.high_thon.lucian.feature.alarm.AlarmScreen
 import com.high_thon.lucian.feature.alarm.viewmodel.AlarmViewModel
+import com.high_thon.lucian.feature.calendar.CalendarScreen
+import com.high_thon.lucian.feature.calendar.CalendarViewModel
 import com.high_thon.lucian.feature.dild.DildScreen
 import com.high_thon.lucian.feature.home.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 enum class LucianPage(val value: String) {
+    Alarm("alarm"),
+    Calendar("calendar"),
     Home("Home"),
     AlarmSetting("AlarmSetting"),
     Dild("Dild")
 }
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavController
 
     private val alarmViewModel by viewModels<AlarmViewModel>()
+    private val calendarViewModel by viewModels<CalendarViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,21 +56,41 @@ class MainActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .navigationBarsPadding()
+                        .systemBarsPadding(),
                 ) {
                     NavHost(
                         navController = navController as NavHostController,
-                        startDestination = LucianPage.Home.name
+                        startDestination = LucianPage.Alarm.name
                     ) {
                         composable(LucianPage.Home.name) {
-                            Log.d("testt",currentRoute.toString())
+                            Log.d("testt", currentRoute.toString())
                             HomeScreen(
                                 navController = navController as NavHostController,
                             )
                         }
 
                         composable(LucianPage.AlarmSetting.name) {
-                            Log.d("testt",currentRoute.toString())
+                            Log.d("testt", currentRoute.toString())
+                            AlarmScreen(
+                                context = this@MainActivity,
+                                viewModel = alarmViewModel,
+                                navController = navController as NavHostController,
+                            )
+                        }
+
+                        composable(LucianPage.Dild.name) {
+                            DildScreen(
+                                navController = navController as NavHostController,
+                            )
+                        }
+
+                        composable(LucianPage.Calendar.name) {
+                            CalendarScreen(
+                                viewModel = calendarViewModel,
+                            )
+                        }
+
+                        composable(LucianPage.Alarm.name) {
                             AlarmScreen(
                                 context = this@MainActivity,
                                 viewModel = alarmViewModel,
@@ -77,6 +104,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                     }
+
                     LucianBottomNavigation(
                         modifier = Modifier
                             .padding(bottom = 10.dp)
@@ -84,7 +112,7 @@ class MainActivity : ComponentActivity() {
                         isVisible = currentRoute in LucianPage.values().map { it.name },
                         currentRoute = currentRoute ?: "Home",
                         onHomeClick = { navController.navigate(LucianPage.Home.name) },
-                        onCalenderClick = {},
+                        onCalenderClick = { navController.navigate(LucianPage.Calendar.name) },
                         onAlarmClick = { navController.navigate(LucianPage.AlarmSetting.name) },
                         onSettingClick = {}
                     )
