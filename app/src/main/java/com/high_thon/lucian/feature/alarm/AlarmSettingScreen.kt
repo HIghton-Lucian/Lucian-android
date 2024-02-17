@@ -19,21 +19,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.high_thon.lucian.common.theme.LucianTheme
-import com.high_thon.lucian.data.rocal.model.AlarmModel
-import com.high_thon.lucian.feature.alarm.util.manager.AlarmScheduler
-import com.high_thon.lucian.feature.alarm.util.manager.AlarmSchedulerImpl
 import com.high_thon.lucian.feature.alarm.viewmodel.AlarmViewModel
 
 @Composable
 fun AlarmScreen(
     context: Context,
-    viewModel: AlarmViewModel
+    viewModel: AlarmViewModel,
+    navController: NavController
 ) {
     var isAfternoon by remember { mutableStateOf(false) }
-    var hour by remember { mutableStateOf("12") }
+    var hour by remember { mutableStateOf("") }
     var minute by remember { mutableStateOf("") }
 
     LucianTheme { colors, typography ->
