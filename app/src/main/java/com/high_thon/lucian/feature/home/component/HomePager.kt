@@ -58,8 +58,7 @@ fun HomeImageHorizontalPager(
                 modifier = modifier
             ) {
                 HorizontalPager(
-                    modifier = Modifier
-                        .height(232.dp),
+                    modifier = Modifier,
                     state = pagerState,
                     pageSpacing = 24.dp,
                     contentPadding = PaddingValues(horizontal = 90.dp),
@@ -117,36 +116,34 @@ fun HomeImageHorizontalPager(
                                 )
                             ) {
                                 if (backVisible.value) {
-                                    Column(
+                                    Box(
                                         modifier = Modifier
                                             .fillMaxSize()
                                             .padding(horizontal = 24.dp, vertical = 16.dp)
                                     ) {
-                                        Spacer(modifier = Modifier.height(16.dp))
-                                        Text(
-                                            text = items[nowPage],
-                                            color = colors.WHITE,
-                                            style = typography.B12,
-                                            modifier = Modifier
-                                                .fillMaxSize()
-                                        )
+                                        Column {
+                                            Spacer(modifier = Modifier.height(16.dp))
+                                            Text(
+                                                modifier = Modifier,
+                                                text = items[nowPage] + "ddd",
+                                                color = colors.WHITE,
+                                                style = typography.B12,
+                                            )
 
-                                        Spacer(modifier = Modifier.height(22.dp))
+                                            Spacer(modifier = Modifier.height(22.dp))
+                                            Text(
+                                                modifier = Modifier,
+                                                text = items[nowPage] + "dd",
+                                                color = colors.WHITE,
+                                                style = typography.R12,
+                                            )
+                                        }
                                         Text(
-                                            text = items[nowPage],
-                                            color = colors.WHITE,
-                                            style = typography.R12,
                                             modifier = Modifier
-                                                .fillMaxSize()
-                                        )
-
-                                        Spacer(modifier = Modifier.weight(1f))
-                                        Text(
-                                            text = items[nowPage],
+                                                .align(Alignment.BottomEnd),
+                                            text = items[nowPage] + "dwewe",
                                             color = colors.GRAY3,
-                                            style = typography.R12,
-                                            modifier = Modifier
-                                                .fillMaxSize()
+                                            style = typography.R12
                                         )
                                     }
                                 } else {
