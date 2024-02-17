@@ -19,6 +19,7 @@ object LucianTypography {
     val B20 = TextStyle(
         fontFamily = suit,
         fontSize = 20.sp,
+        fontWeight = FontWeight.SemiBold,
         lineHeight = 34.sp
     )
 
@@ -26,6 +27,7 @@ object LucianTypography {
     val R20 = TextStyle(
         fontFamily = suit,
         fontSize = 20.sp,
+        fontWeight = FontWeight.Normal,
         lineHeight = 34.sp
     )
 
@@ -33,6 +35,7 @@ object LucianTypography {
     val B18 = TextStyle(
         fontFamily = suit,
         fontSize = 18.sp,
+        fontWeight = FontWeight.SemiBold,
         lineHeight = 28.sp
     )
 
@@ -40,6 +43,7 @@ object LucianTypography {
     val R18 = TextStyle(
         fontFamily = suit,
         fontSize = 18.sp,
+        fontWeight = FontWeight.Normal,
         lineHeight = 28.sp
     )
 
@@ -47,6 +51,7 @@ object LucianTypography {
     val B16 = TextStyle(
         fontFamily = suit,
         fontSize = 16.sp,
+        fontWeight = FontWeight.SemiBold,
         lineHeight = 26.sp
     )
 
@@ -54,6 +59,7 @@ object LucianTypography {
     val R16 = TextStyle(
         fontFamily = suit,
         fontSize = 16.sp,
+        fontWeight = FontWeight.Normal,
         lineHeight = 26.sp
     )
 
@@ -61,6 +67,7 @@ object LucianTypography {
     val B14 = TextStyle(
         fontFamily = suit,
         fontSize = 14.sp,
+        fontWeight = FontWeight.SemiBold,
         lineHeight = 22.sp
     )
 
@@ -68,6 +75,7 @@ object LucianTypography {
     val R14 = TextStyle(
         fontFamily = suit,
         fontSize = 14.sp,
+        fontWeight = FontWeight.Normal,
         lineHeight = 22.sp
     )
 
@@ -75,6 +83,7 @@ object LucianTypography {
     val B12 = TextStyle(
         fontFamily = suit,
         fontSize = 12.sp,
+        fontWeight = FontWeight.SemiBold,
         lineHeight = 20.sp
     )
 
@@ -82,6 +91,7 @@ object LucianTypography {
     val R12 = TextStyle(
         fontFamily = suit,
         fontSize = 12.sp,
+        fontWeight = FontWeight.Normal,
         lineHeight = 20.sp
     )
 
@@ -89,6 +99,7 @@ object LucianTypography {
     val B10 = TextStyle(
         fontFamily = suit,
         fontSize = 10.sp,
+        fontWeight = FontWeight.SemiBold,
         lineHeight = 16.sp
     )
 
@@ -96,6 +107,7 @@ object LucianTypography {
     val R10 = TextStyle(
         fontFamily = suit,
         fontSize = 10.sp,
+        fontWeight = FontWeight.Normal,
         lineHeight = 16.sp
     )
 }
