@@ -14,11 +14,11 @@ import com.high_thon.lucian.common.theme.color.LightColor
 @Composable
 fun LucianTheme(
     colors: ColorTheme = if (true) LightColor else LightColor,
-//    typography: LucianTypography = LucianTypography,
+    typography: LucianTypography = LucianTypography,
     content: @Composable (colors: ColorTheme, typography: LucianTypography) -> Unit
 ) {
     val darkTheme = isSystemInDarkTheme()
-//    content(colors, typography)
+    content(colors, typography)
     val view = LocalView.current
     SideEffect {
         val context = view.context

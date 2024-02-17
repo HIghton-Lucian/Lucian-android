@@ -4,31 +4,27 @@ import androidx.compose.ui.graphics.Color
 import com.high_thon.lucian.common.theme.ColorTheme
 
 object LightColor : ColorTheme() {
-    override val M1 = Color(0xFF81A895)
-    override val M2 = Color(0xFF416A36)
-    override val M3 = Color(0xFFE5F0EC)
+    override val BACKGROUND = Color(0x00000000)
+    override val LIGHTBLUE1 = Color(0x00000000)
+    override val LIGHTBLUE2 = Color(0x00000000)
+    override val ICONBLUE = Color(0x00000000)
+    override val ICONGRAY = Color(0x00000000)
+    override val TEXTCOLOR = Color(0x343434)
 
-    override val GRAY1 = Color(0xFFDADADA)
-    override val GRAY2 = Color(0xFF999999)
-    override val GRAY3 = Color(0xFFEFEFEF)
-    override val GRAY4 = Color(0xFFA6A6A6)
-    override val GRAY5 = Color(0xFF808080)
-    override val GRAY6 = Color(0xFF50555C)
-    override val GRAY7 = Color(0xFFD9D9D9)
-    override val GRAY8 = Color(0xFFBEBEBE)
-
-    override val BLUE1 = Color(0xFF4C53FF)
-    override val BLUE2 = Color(0xFF3298FF)
+    override val GRAY1 = Color(0xFAFAFA)
+    override val GRAY2 = Color(0xD8D8D8)
+    override val GRAY3 = Color(0xBBBBBB)
+    override val GRAY4 = Color(0xA8A8A8)
+    override val GRAY5 = Color(0x8A8A8A)
+    override val GRAY6 = Color(0x787878)
+    override val GRAY7 = Color(0x5C5C5C)
+    override val GRAY8 = Color(0x525252)
+    override val GRAY9 = Color(0x383838)
+    override val GRAY10 = Color(0x1F1F1F)
+    override val GRAY11 = Color(0x0F0F0F)
 
     override val ERROR = Color(0xFFFF6767)
     override val BLACK = Color(0xFF000000)
-    override val BLACK2 = Color(0xFF292929)
     override val WHITE = Color(0xFFFFFFff)
-    override val WHITE2 = Color(0xFFFAFAFA)
     override val TRANSPARENT = Color(0x00000000)
-
-    override val TRANSPARENTBLACK = Color(0xBF1E1E1E)
-    override val TRANSPARENTWHITE = Color(0x99FFFFFF)
-    override val TRANSPARENTGRAY = Color(0xA6545458)
-    override val TRANSPARENTM1 = Color(0x5981A895)
 }
