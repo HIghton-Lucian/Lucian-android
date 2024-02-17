@@ -31,12 +31,13 @@ fun HomeButton(
 ) {
     LucianTheme { colors, typography ->
         Box(
-            modifier = Modifier
-                .background(
-                    color = colors.SUB,
-                    shape = RoundedCornerShape(12.dp)
-                )
-                .then(modifier),
+            modifier = modifier
+                .then(
+                    Modifier.background(
+                        color = colors.SUB,
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                ),
             contentAlignment = Alignment.Center
         ) {
             Box {
