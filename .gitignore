@@ -17,3 +17,10 @@ secrets.tar
 /report
 snapshots
 signingconfig.properties
+
+# IntelliJ
+.iml
+.idea
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
