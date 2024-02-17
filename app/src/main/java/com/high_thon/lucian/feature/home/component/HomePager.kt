@@ -168,16 +168,89 @@ fun HomeImageHorizontalPager(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun HomeHorizontalPager(
+    modifier: Modifier,
+    items: List<String>
+) {
+    val pagerState = rememberPagerState()
+    LucianTheme { colors, typography ->
+        Column {
+            Box(
+                modifier = modifier
+            ) {
+                HorizontalPager(
+                    modifier = Modifier
+                        .height(78.dp),
+                    state = pagerState,
+                    pageSpacing = 20.dp,
+                    contentPadding = PaddingValues(horizontal = 64.dp),
+                    pageCount = Int.MAX_VALUE
+                ) { page ->
+                    // 앞 페이지 상태 관리
+                    val nowPage = page % items.size
+                    val show = nowPage == pagerState.currentPage % items.size
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                    ) {
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clipToBounds(),
+                            color = Color(0xFF2C3853),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+                            this@Column.AnimatedVisibility(
+                                visible = show,
+                                enter = fadeIn(
+                                    animationSpec = tween(1000)
+                                ),
+                                exit = fadeOut(
+                                    animationSpec = tween(1000)
+                                )
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                ) {
+                                    Text(
+                                        modifier = Modifier
+                                            .align(Alignment.Center),
+                                        text = items[nowPage],
+                                        color = colors.WHITE,
+                                        style = typography.B20,
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @Preview
 @Composable
 fun PagerPreview() {
-    LucianTheme { colors, typography ->  
-        HomeImageHorizontalPager(
-            modifier = Modifier
-                .height(280.dp)
-                .fillMaxWidth(),
-            items = listOf("test ", "test ", "test ", "test "),
-            onItemClick = {}
-        )
+    LucianTheme { colors, typography ->
+        Column {
+            HomeImageHorizontalPager(
+                modifier = Modifier
+                    .height(280.dp)
+                    .fillMaxWidth(),
+                items = listOf("test ", "test ", "test ", "test "),
+                onItemClick = {}
+            )
+
+            HomeHorizontalPager(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(78.dp),
+                items = listOf("test ", "test ", "test ", "test "),
+            )
+        }
     }
 }
