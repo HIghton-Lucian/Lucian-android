@@ -25,6 +25,7 @@ import androidx.navigation.NavController
 import com.high_thon.lucian.R
 import com.high_thon.lucian.common.component.LucianTextField
 import com.high_thon.lucian.common.theme.LucianTheme
+import com.high_thon.lucian.core.LucianPage
 import com.high_thon.lucian.feature.dild.component.DildButton
 import com.high_thon.lucian.feature.home.component.HomeButton
 import com.high_thon.lucian.feature.home.component.HomeHorizontalPager
@@ -111,7 +112,9 @@ fun HomeScreen(
                     .clickable(
                         enabled = true
                     ) {
-
+                        if (keyword.isNotBlank() && keyword.length > 4) {
+                            navController.navigate(LucianPage.HomeResult.value.replace("{keyword}", keyword))
+                        }
                     },
                 text = "결과 보기"
             )
