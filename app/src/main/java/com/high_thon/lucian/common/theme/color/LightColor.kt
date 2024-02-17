@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 import com.high_thon.lucian.common.theme.ColorTheme
 
 object LightColor : ColorTheme() {
+    override val SUBPrimary: Color = Color(0xFF41495B)
     override val BACKGROUND = Color(0xFF212A3E)
     override val SUB: Color = Color(0xFF2A354D)
     override val LIGHTBLUE1 = Color(0xFF0088EB)
@@ -28,4 +29,5 @@ object LightColor : ColorTheme() {
     override val BLACK = Color(0xFF000000)
     override val WHITE = Color(0xFFFFFFff)
     override val TRANSPARENT = Color(0x00000000)
+    override val BLUE: Color = Color(0xFF0088EB)
 }
