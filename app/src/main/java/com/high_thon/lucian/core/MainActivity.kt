@@ -25,6 +25,7 @@ import com.high_thon.lucian.feature.alarm.AlarmScreen
 import com.high_thon.lucian.feature.alarm.viewmodel.AlarmViewModel
 import com.high_thon.lucian.feature.dild.DildScreen
 import com.high_thon.lucian.feature.home.HomeScreen
+import com.high_thon.lucian.feature.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 enum class LucianPage(val value: String) {
@@ -37,6 +38,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var navController: NavController
 
     private val alarmViewModel by viewModels<AlarmViewModel>()
+    private val homeViewModel by viewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +61,7 @@ class MainActivity : ComponentActivity() {
                             Log.d("testt",currentRoute.toString())
                             HomeScreen(
                                 navController = navController as NavHostController,
+                                viewModel = homeViewModel
                             )
                         }
 
