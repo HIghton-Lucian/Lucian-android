@@ -33,7 +33,7 @@ class HomeResultViewModel @Inject constructor(
         kotlin.runCatching {
             chatGptRepository.postImageGenerate(keyword = keyword)
         }.onSuccess {
-            Log.d("TAG", "createImage: ${it.image}")
+            Log.d("TAG", "createImage: ${it.image}") 
             _state.value = _state.value.copy(
                 loading = false,
                 image = it.image
