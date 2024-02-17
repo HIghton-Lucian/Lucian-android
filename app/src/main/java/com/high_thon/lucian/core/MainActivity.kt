@@ -16,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.high_thon.lucian.common.component.LucianBottomNavigation
 import com.high_thon.lucian.common.theme.LucianTheme
 import com.high_thon.lucian.feature.alarm.AlarmScreen
@@ -28,6 +30,8 @@ import com.high_thon.lucian.feature.calendar.CalendarScreen
 import com.high_thon.lucian.feature.calendar.CalendarViewModel
 import com.high_thon.lucian.feature.dild.DildScreen
 import com.high_thon.lucian.feature.home.HomeScreen
+import com.high_thon.lucian.feature.home.result.HomeResultScreen
+import com.high_thon.lucian.feature.home.result.viewmodel.HomeResultViewModel
 import com.high_thon.lucian.feature.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,6 +39,7 @@ enum class LucianPage(val value: String) {
     Alarm("alarm"),
     Calendar("calendar"),
     Home("Home"),
+    HomeResult("Home/{keyword}"),
     AlarmSetting("AlarmSetting"),
     Dild("Dild")
 }
@@ -46,6 +51,7 @@ class MainActivity : ComponentActivity() {
     private val alarmViewModel by viewModels<AlarmViewModel>()
     private val calendarViewModel by viewModels<CalendarViewModel>()
     private val homeViewModel by viewModels<HomeViewModel>()
+    private val homeResultViewModel by viewModels<HomeResultViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +76,24 @@ class MainActivity : ComponentActivity() {
                                 navController = navController as NavHostController,
                                 viewModel = homeViewModel
                             )
+                        }
+
+                        composable(
+                            route = LucianPage.HomeResult.value,
+                            arguments = listOf(
+                                navArgument("keyword") {
+                                    type = NavType.StringType
+                                }
+                            )
+                        ) { entry ->
+                            val keyword = entry.arguments?.getString("keyword")
+                            if (keyword != null) {
+                                HomeResultScreen(
+                                    navController = navController,
+                                    viewModel = homeResultViewModel,
+                                    keyword = keyword
+                                )
+                            }
                         }
 
                         composable(LucianPage.AlarmSetting.name) {
