@@ -1,9 +1,14 @@
+import java.util.Properties
+
 plugins {
     id(ProjectProperties.Gradle.KOTLIN)
     id(ProjectProperties.Gradle.APPLICATION)
     id(ProjectProperties.Gradle.HILT)
     kotlin(ProjectProperties.Gradle.KAPT)
 }
+
+val properties = Properties()
+properties.load(project.rootProject.file("local.properties").inputStream())
 
 android {
     namespace = ProjectProperties.Gradle.APP
@@ -15,6 +20,8 @@ android {
         targetSdk = ProjectProperties.Versions.TARGET_SDK_VERSION
         versionCode = ProjectProperties.Versions.VERSION_CODE
         versionName = ProjectProperties.Versions.VERSION_NAME
+
+        buildConfigField("String", "CHATGPT", "${properties["CHATGPT"]}")
 
         testInstrumentationRunner = ProjectProperties.TestProperties.TEST_RUNNER
         vectorDrawables {
@@ -41,6 +48,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {
