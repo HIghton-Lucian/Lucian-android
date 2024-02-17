@@ -28,6 +28,7 @@ import com.high_thon.lucian.feature.calendar.CalendarScreen
 import com.high_thon.lucian.feature.calendar.CalendarViewModel
 import com.high_thon.lucian.feature.dild.DildScreen
 import com.high_thon.lucian.feature.home.HomeScreen
+import com.high_thon.lucian.feature.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 enum class LucianPage(val value: String) {
@@ -44,6 +45,7 @@ class MainActivity : ComponentActivity() {
 
     private val alarmViewModel by viewModels<AlarmViewModel>()
     private val calendarViewModel by viewModels<CalendarViewModel>()
+    private val homeViewModel by viewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +68,7 @@ class MainActivity : ComponentActivity() {
                             Log.d("testt", currentRoute.toString())
                             HomeScreen(
                                 navController = navController as NavHostController,
+                                viewModel = homeViewModel
                             )
                         }
 
