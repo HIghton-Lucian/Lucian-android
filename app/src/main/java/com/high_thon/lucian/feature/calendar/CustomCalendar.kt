@@ -1,5 +1,7 @@
 package com.high_thon.lucian.feature.calendar
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,11 +17,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.high_thon.lucian.R
 import com.high_thon.lucian.common.theme.LucianTypography
 import java.time.DayOfWeek
 import java.time.YearMonth
@@ -41,31 +46,39 @@ fun CustomCalendar(
     val formatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.US)
 
     Column(horizontalAlignment = CenterHorizontally) {
-        Text(
-            text = yearMonth.format(formatter),
-            color = textColor,
-        )
 
-        Spacer(modifier = Modifier.height(24.dp))
 
         // 월 변경 버튼
-        Row {
-            Button(onClick = {
-                yearMonth = yearMonth.minusMonths(1)
-                onMonthChanged(yearMonth)
-            }) {
-                Text("Previous")
-            }
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            Button(onClick = {
-                yearMonth = yearMonth.plusMonths(1)
-                onMonthChanged(yearMonth)
-            }) {
-                Text("Next")
-            }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                modifier = Modifier.clickable {
+                    yearMonth = yearMonth.minusMonths(1)
+                    onMonthChanged(yearMonth)
+                },
+                painter = painterResource(id = R.drawable.ic_left_arrow),
+                contentDescription = null,
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = yearMonth.format(formatter),
+                color = textColor,
+                style = LucianTypography.B20
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Image(
+                modifier = Modifier.clickable {
+                    yearMonth = yearMonth.plusMonths(1)
+                    onMonthChanged(yearMonth)
+                },
+                painter = painterResource(id = R.drawable.ic_right_arrow),
+                contentDescription = null,
+            )
         }
+
+        Spacer(modifier = Modifier.height(24.dp))
 
         Spacer(modifier = Modifier.height(8.dp))
 
