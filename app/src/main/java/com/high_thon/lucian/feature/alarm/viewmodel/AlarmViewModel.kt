@@ -2,7 +2,7 @@ package com.high_thon.lucian.feature.alarm.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.high_thon.lucian.data.rocal.model.AlarmModel
+import com.high_thon.lucian.data.local.model.AlarmModel
 import com.high_thon.lucian.feature.alarm.util.manager.AlarmScheduler
 import com.high_thon.lucian.feature.alarm.util.manager.AlarmSchedulerImpl
 import dagger.hilt.android.lifecycle.HiltViewModel

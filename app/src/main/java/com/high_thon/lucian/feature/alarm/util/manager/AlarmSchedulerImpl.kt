@@ -5,7 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.high_thon.lucian.data.rocal.model.AlarmModel
+import com.high_thon.lucian.data.local.model.AlarmModel
 import com.high_thon.lucian.feature.alarm.util.receiver.AlarmReceiver
 import java.util.Calendar
 
