@@ -3,6 +3,7 @@ package com.high_thon.lucian.core
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +21,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.high_thon.lucian.common.theme.LucianTheme
 import com.high_thon.lucian.feature.alarm.AlarmScreen
+import com.high_thon.lucian.feature.alarm.viewmodel.AlarmViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 enum class LucianPage(val value: String) {
@@ -28,6 +30,9 @@ enum class LucianPage(val value: String) {
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavController
+
+    private val alarmViewModel by viewModels<AlarmViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -43,7 +48,12 @@ class MainActivity : ComponentActivity() {
                         navController = navController as NavHostController,
                         startDestination = LucianPage.Alarm.name
                     ) {
-                        composable(LucianPage.Alarm.name) {}
+                        composable(LucianPage.Alarm.name) {
+                            AlarmScreen(
+                                context = this@MainActivity,
+                                viewModel = alarmViewModel
+                            )
+                        }
                     }
                 }
             }
