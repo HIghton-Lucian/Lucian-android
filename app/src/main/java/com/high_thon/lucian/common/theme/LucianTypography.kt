@@ -110,4 +110,11 @@ object LucianTypography {
         fontWeight = FontWeight.Normal,
         lineHeight = 16.sp
     )
+
+    @Stable
+    val Clock = TextStyle(
+        fontFamily = FontFamily(Font(R.font.poppins_extrabold, FontWeight.ExtraBold)),
+        fontSize = 50.sp,
+        lineHeight = 80.sp
+    )
 }

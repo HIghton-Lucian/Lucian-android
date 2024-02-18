@@ -24,19 +24,27 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.high_thon.lucian.common.component.LucianBottomNavigation
 import com.high_thon.lucian.common.theme.LucianTheme
+import com.high_thon.lucian.feature.alarm.Alarm1
+import com.high_thon.lucian.feature.alarm.Alarm2
+import com.high_thon.lucian.feature.alarm.Alarm3
+import com.high_thon.lucian.feature.alarm.Alarm4
 import com.high_thon.lucian.feature.alarm.AlarmScreen
+import com.high_thon.lucian.feature.alarm.AlarmSettingScreen
 import com.high_thon.lucian.feature.alarm.viewmodel.AlarmViewModel
 import com.high_thon.lucian.feature.calendar.CalendarScreen
 import com.high_thon.lucian.feature.calendar.CalendarViewModel
+import com.high_thon.lucian.feature.diary.DiaryAfterScreen
+import com.high_thon.lucian.feature.diary.DiaryScreen
 import com.high_thon.lucian.feature.dild.DildScreen
 import com.high_thon.lucian.feature.home.HomeScreen
 import com.high_thon.lucian.feature.home.result.HomeResultScreen
 import com.high_thon.lucian.feature.home.result.viewmodel.HomeResultViewModel
 import com.high_thon.lucian.feature.home.viewmodel.HomeViewModel
+import com.high_thon.lucian.feature.rc.RcScreen
+import com.high_thon.lucian.feature.sleep.SleepScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 enum class LucianPage(val value: String) {
-    Alarm("alarm"),
     Calendar("calendar"),
     Home("Home"),
     HomeResult("Home/{keyword}"),
@@ -44,6 +52,13 @@ enum class LucianPage(val value: String) {
     Dild("Dild")
 }
 
+enum class SleepPage(val value: String) {
+    Sleep("Sleep"),
+    Rc("Rc"),
+    Alarm("Alarm"),
+    Diary("Diary"),
+    AfterDiary("After")
+}
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavController
@@ -68,13 +83,14 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavHost(
                         navController = navController as NavHostController,
-                        startDestination = LucianPage.Alarm.name
+                        startDestination = LucianPage.Home.name
                     ) {
                         composable(LucianPage.Home.name) {
                             Log.d("testt", currentRoute.toString())
                             HomeScreen(
                                 navController = navController as NavHostController,
-                                viewModel = homeViewModel
+                                viewModel = homeViewModel,
+                                onSleepClick = { navController.navigate(SleepPage.Diary.name) }
                             )
                         }
 
@@ -96,13 +112,34 @@ class MainActivity : ComponentActivity() {
                             }
                         }
 
-                        composable(LucianPage.AlarmSetting.name) {
-                            Log.d("testt", currentRoute.toString())
+                        composable(SleepPage.Alarm.name) {
                             AlarmScreen(
+                                onClick = { navController.navigate(SleepPage.AfterDiary.name)}
+                            )
+                        }
+                        composable(SleepPage.AfterDiary.name) {
+                            DiaryAfterScreen {
+                                navController.navigate(LucianPage.Calendar.name)
+                            }
+                        }
+
+                        composable(LucianPage.AlarmSetting.name) {
+                            Log.d("testt",currentRoute.toString())
+                            AlarmSettingScreen(
                                 context = this@MainActivity,
                                 viewModel = alarmViewModel,
                                 navController = navController as NavHostController,
+                                onClick = {}
                             )
+                        }
+
+                        composable(SleepPage.Sleep.name) {
+                            SleepScreen {
+                                navController.navigate(SleepPage.Rc.name)
+                            }
+                        }
+                        composable(SleepPage.Rc.name) {
+                            RcScreen(onClick = {navController.navigate(Alarm.Alarm1.name)})
                         }
 
                         composable(LucianPage.Dild.name) {
@@ -117,18 +154,35 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        composable(LucianPage.Alarm.name) {
-                            AlarmScreen(
-                                context = this@MainActivity,
-                                viewModel = alarmViewModel,
-                                navController = navController as NavHostController,
-                            )
-                        }
-
                         composable(LucianPage.Dild.name) {
                             DildScreen(
                                 navController = navController as NavHostController,
                             )
+                        }
+                        composable(Alarm.Alarm1.name) {
+                            Alarm1 {
+                                navController.navigate(Alarm.Alarm2.name)
+                            }
+                        }
+                        composable(Alarm.Alarm2.name) {
+                            Alarm2 {
+                                navController.navigate(Alarm.Alarm3.name)
+                            }
+                        }
+                        composable(Alarm.Alarm3.name) {
+                            Alarm3 {
+                                navController.navigate(Alarm.Alarm4.name)
+                            }
+                        }
+                        composable(Alarm.Alarm4.name) {
+                            Alarm4 {
+                                navController.navigate(SleepPage.Sleep.name)
+                            }
+                        }
+                        composable(SleepPage.Diary.name) {
+                            DiaryScreen {
+                                navController.navigate(SleepPage.Rc.name)
+                            }
                         }
                     }
 
@@ -141,10 +195,18 @@ class MainActivity : ComponentActivity() {
                         onHomeClick = { navController.navigate(LucianPage.Home.name) },
                         onCalenderClick = { navController.navigate(LucianPage.Calendar.name) },
                         onAlarmClick = { navController.navigate(LucianPage.AlarmSetting.name) },
-                        onSettingClick = {}
+                        onSettingClick = { navController.navigate(SleepPage.Alarm.name) }
                     )
                 }
             }
         }
     }
+}
+
+
+enum class Alarm(val value: String) {
+    Alarm1("Alarm1"),
+    Alarm2("Alarm2"),
+    Alarm3("Alarm3"),
+    Alarm4("Alarm4"),
 }

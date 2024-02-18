@@ -38,11 +38,10 @@ import com.high_thon.lucian.feature.dild.component.DildButton
 import com.high_thon.lucian.feature.rc.component.RcCard
 import dagger.hilt.android.lifecycle.HiltViewModel
 
-@Preview
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RcScreen(
-
+    onClick: () -> Unit
 ) {
     var chooseList: List<String> by remember { mutableStateOf(emptyList()) }
     var rcList by remember { mutableStateOf(RC) }
@@ -98,7 +97,7 @@ fun RcScreen(
                             .clickable(
                                 enabled = chooseList.isNotEmpty()
                             ) {
-
+                              onClick()
                             },
                         text = "다음"
                     )

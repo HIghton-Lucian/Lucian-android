@@ -42,6 +42,9 @@ android {
         sourceCompatibility = ProjectProperties.Versions.JAVA_VERSION
         targetCompatibility = ProjectProperties.Versions.JAVA_VERSION
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.COMPOSE
+    }
     kotlinOptions {
         jvmTarget = ProjectProperties.Versions.JVM_TARGET
     }
@@ -53,6 +56,9 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
+    }
+    buildFeatures {
+        compose = true
     }
 }
 
@@ -105,4 +111,7 @@ dependencies {
     //okhttp
     implementation(Dependency.Libraries.OKHTTP)
     implementation(Dependency.Libraries.OKHTTP_LOGGING_INTERCEPTOR)
+
+    //dataStore
+    implementation(Dependency.DataStore.PREFERENCES)
 }

@@ -36,7 +36,8 @@ import com.high_thon.lucian.feature.home.viewmodel.HomeViewModel
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: HomeViewModel
+    viewModel: HomeViewModel,
+    onSleepClick: () -> Unit
 ) {
 
     val scrollState = rememberScrollState()
@@ -71,7 +72,7 @@ fun HomeScreen(
                     .clickable(
                         enabled = true
                     ) {
-
+                      onSleepClick()
                     },
                 text = "수면하기",
                 isSleep = true
